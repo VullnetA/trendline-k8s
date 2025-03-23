@@ -105,3 +105,9 @@ The application uses PersistentVolumeClaims for:
 6.  **Persistent storage** for stateful components
 7.  **Comprehensive monitoring** with Prometheus and Grafana
 8.  **Progressive deployment** across dev/staging/prod environments
+
+## Contact
+
+[](https://github.com/VullnetA/TrendLine?tab=readme-ov-file#contact)
+
+For any inquiries or support, please contact me at  [vullnetazizi9@gmail.com](mailto:vullnetazizi9@gmail.com).
