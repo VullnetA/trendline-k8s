@@ -1,4 +1,4 @@
-# Frontend Deployment
+# Frontend Deployment for Development
 ---
 apiVersion: apps/v1
 kind: Deployment

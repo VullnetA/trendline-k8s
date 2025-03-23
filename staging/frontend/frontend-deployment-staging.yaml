@@ -6,9 +6,9 @@ metadata:
   name: trendline-frontend
   namespace: staging
 spec:
-  replicas: 3 # At least 3 pods for staging
+  replicas: 3
   strategy:
-    type: RollingUpdate # Changed to RollingUpdate for zero-downtime deployments
+    type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
       maxSurge: 1
@@ -28,7 +28,7 @@ spec:
             - containerPort: 80
           resources:
             requests:
-              memory: "128Mi" # Double the resources compared to dev
+              memory: "128Mi"
               cpu: "100m"
             limits:
               memory: "256Mi"

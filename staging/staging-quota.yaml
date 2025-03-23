@@ -7,7 +7,7 @@ metadata:
   namespace: staging
 spec:
   hard:
-    requests.cpu: "3" # Total requested CPU cannot exceed 2 cores
-    requests.memory: "4Gi" # Total requested memory cannot exceed 2Gi
-    limits.cpu: "3" # Total CPU usage cannot exceed 4 cores
-    limits.memory: "8Gi" # Total memory usage cannot exceed 4Gi
+    requests.cpu: "3"
+    requests.memory: "4Gi"
+    limits.cpu: "3"
+    limits.memory: "8Gi"

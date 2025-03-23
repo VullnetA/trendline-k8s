@@ -1,3 +1,5 @@
+# Solr StatefulSet for Development
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -19,7 +21,6 @@ spec:
           image: solr:latest
           ports:
             - containerPort: 8983
-          # Remove the problematic --user-managed flag
           args:
             - "solr-precreate"
             - "clothing_shop_core"

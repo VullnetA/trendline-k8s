@@ -6,7 +6,7 @@ metadata:
   name: trendline-backend
   namespace: production
 spec:
-  type: NodePort # You could also consider LoadBalancer for production
+  type: NodePort
   selector:
     app: trendline-backend
   ports:

@@ -1,4 +1,4 @@
-# Grafana HPA Production
+# Grafana HPA for Production
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -9,7 +9,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: grafana # Name of the Grafana deployment
+    name: grafana
   minReplicas: 1
   maxReplicas: 2
   metrics:
@@ -18,4 +18,4 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 60 # Target 60% average CPU utilization
+          averageUtilization: 60

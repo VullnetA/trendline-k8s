@@ -1,4 +1,4 @@
-# Frontend HPA Production
+# Frontend HPA for Production
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -9,13 +9,13 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: trendline-frontend # Name of the frontend deployment
-  minReplicas: 3 # Minimum number of Pods
-  maxReplicas: 10 # Maximum number of Pods
+    name: trendline-frontend
+  minReplicas: 3
+  maxReplicas: 10
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 50 # Target CPU utilization percentage
+          averageUtilization: 50

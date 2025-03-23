@@ -1,8 +1,10 @@
+# PostgreSQL Service for Production
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: trendline-database
-  namespace: production # Changed namespace
+  namespace: production
 spec:
   selector:
     app: trendline-database

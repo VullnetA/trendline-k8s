@@ -1,8 +1,10 @@
+# PostgreSQL Service for Staging
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: trendline-database
-  namespace: staging # Changed namespace
+  namespace: staging
 spec:
   selector:
     app: trendline-database

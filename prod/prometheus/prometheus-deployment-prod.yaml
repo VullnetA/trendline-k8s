@@ -1,4 +1,4 @@
-# Prometheus Deployment
+# Prometheus Deployment for Production
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -25,11 +25,11 @@ spec:
               mountPath: /etc/prometheus
           resources:
             requests:
-              memory: "32Mi" # Minimum guaranteed memory
-              cpu: "25m" # Minimum guaranteed CPU
+              memory: "32Mi"
+              cpu: "25m"
             limits:
-              memory: "128Mi" # Maximum allowed memory
-              cpu: "50m" # Maximum allowed CPU
+              memory: "128Mi"
+              cpu: "50m"
       volumes:
         - name: prometheus-config
           configMap:

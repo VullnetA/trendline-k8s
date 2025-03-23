@@ -1,4 +1,4 @@
-# Backend HPA Production
+# Backend HPA for Production
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -9,13 +9,13 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: trendline-backend # Target the backend deployment
-  minReplicas: 3 # Minimum number of pods
-  maxReplicas: 10 # Maximum number of pods
+    name: trendline-backend
+  minReplicas: 3
+  maxReplicas: 10
   metrics:
     - type: Resource
       resource:
-        name: cpu # Scale based on CPU utilization
+        name: cpu
         target:
           type: Utilization
-          averageUtilization: 50 # Target 50% average CPU utilization
+          averageUtilization: 50

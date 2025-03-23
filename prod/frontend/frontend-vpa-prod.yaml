@@ -11,7 +11,7 @@ spec:
     kind: Deployment
     name: trendline-frontend
   updatePolicy:
-    updateMode: "Off" # Recommendation mode only - no automatic updates
+    updateMode: "Off"
   resourcePolicy:
     containerPolicies:
       - containerName: "*"

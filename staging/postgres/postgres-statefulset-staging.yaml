@@ -1,4 +1,5 @@
-# postgres-statefulset.yaml for staging
+# PostgreSQL StatefulSet for Staging
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -6,7 +7,7 @@ metadata:
   namespace: staging
 spec:
   serviceName: trendline-database
-  replicas: 3 # Increased for staging
+  replicas: 3
   selector:
     matchLabels:
       app: trendline-database
@@ -44,4 +45,4 @@ spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 20Gi # Increased storage
+            storage: 20Gi

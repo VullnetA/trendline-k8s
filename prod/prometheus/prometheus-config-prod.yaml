@@ -1,4 +1,4 @@
-# Prometheus Config Map
+# Prometheus Config Map for Production
 ---
 apiVersion: v1
 kind: ConfigMap

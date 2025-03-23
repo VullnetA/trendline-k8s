@@ -1,4 +1,4 @@
-# Grafana Service
+# Grafana Service for Production
 ---
 apiVersion: v1
 kind: Service
@@ -6,9 +6,9 @@ metadata:
   name: grafana
   namespace: production
 spec:
-  type: NodePort # Add this line
+  type: NodePort
   selector:
-    app: grafana # Fix this line - remove 'type: NodePort'
+    app: grafana
   ports:
     - protocol: TCP
       port: 3000

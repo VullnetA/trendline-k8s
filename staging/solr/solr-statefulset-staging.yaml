@@ -7,7 +7,7 @@ metadata:
   namespace: staging
 spec:
   serviceName: trendline-solr
-  replicas: 3 # Maintaining 3 replicas for stable structure in staging
+  replicas: 3
   selector:
     matchLabels:
       app: trendline-solr
@@ -26,7 +26,7 @@ spec:
             - "clothing_shop_core"
           env:
             - name: SOLR_HEAP
-              value: "64m" # Set same as production for consistency
+              value: "64m"
           volumeMounts:
             - name: solr-data
               mountPath: /var/solr
@@ -44,4 +44,4 @@ spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 10Gi # Less storage than production
+            storage: 10Gi

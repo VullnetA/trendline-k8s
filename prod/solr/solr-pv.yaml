@@ -1,4 +1,4 @@
-# Solr Persistent Volume
+# Solr Persistent Volume for Production
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -11,5 +11,3 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /data/solr-data
----
-

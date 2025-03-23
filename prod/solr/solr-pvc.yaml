@@ -1,4 +1,4 @@
-# Solr Persistent Volume Claim
+# Solr Persistent Volume Claim for Production
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

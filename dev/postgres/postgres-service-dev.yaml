@@ -1,4 +1,4 @@
-# PostgreSQL Service
+# PostgreSQL Service for Development
 ---
 apiVersion: v1
 kind: Service

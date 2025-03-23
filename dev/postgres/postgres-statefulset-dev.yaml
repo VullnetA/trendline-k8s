@@ -1,4 +1,4 @@
-# PostgreSQL StatefulSet
+# PostgreSQL StatefulSet for Development
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -33,11 +33,11 @@ spec:
               mountPath: /var/lib/postgresql/data
           resources:
             requests:
-              memory: "128Mi" # Minimum guaranteed memory
-              cpu: "100m" # Minimum guaranteed CPU
+              memory: "128Mi"
+              cpu: "100m"
             limits:
-              memory: "256Mi" # Maximum allowed memory
-              cpu: "200m" # Maximum allowed CPU
+              memory: "256Mi"
+              cpu: "200m"
   volumeClaimTemplates:
     - metadata:
         name: postgres-storage

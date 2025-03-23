@@ -11,7 +11,7 @@ spec:
     kind: Deployment
     name: prometheus
   updatePolicy:
-    updateMode: "Off" # Recommendation mode only
+    updateMode: "Off"
   resourcePolicy:
     containerPolicies:
       - containerName: "*"

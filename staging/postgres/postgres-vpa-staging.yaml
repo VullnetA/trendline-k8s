@@ -1,4 +1,4 @@
-# Database VPA for Staging
+# PostgreSQL VPA for Staging
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -11,7 +11,7 @@ spec:
     kind: StatefulSet
     name: trendline-database
   updatePolicy:
-    updateMode: "Off" # Recommendation mode only - no automatic updates
+    updateMode: "Off"
   resourcePolicy:
     containerPolicies:
       - containerName: "*"

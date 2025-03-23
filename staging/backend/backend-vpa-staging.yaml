@@ -11,7 +11,7 @@ spec:
     kind: Deployment
     name: trendline-backend
   updatePolicy:
-    updateMode: "Off" # Recommendation mode only (doesn't apply changes automatically)
+    updateMode: "Off"
   resourcePolicy:
     containerPolicies:
       - containerName: "*"

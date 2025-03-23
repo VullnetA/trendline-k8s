@@ -10,12 +10,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: trendline-backend
-  minReplicas: 3 # Maintain minimum 3 pods as required for staging
-  maxReplicas: 6 # Allow scaling up to 6 pods based on load
+  minReplicas: 3
+  maxReplicas: 6
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 70 # Scale when average CPU utilization reaches 70%
+          averageUtilization: 70
