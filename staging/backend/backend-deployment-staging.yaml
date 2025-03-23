@@ -1,0 +1,37 @@
+# Backend Deployment for Staging
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trendline-backend
+  namespace: staging
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: trendline-backend
+  template:
+    metadata:
+      labels:
+        app: trendline-backend
+    spec:
+      containers:
+        - name: trendline-backend
+          image: trendline-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Staging"
+            - name: ConnectionStrings__DefaultConnection
+              value: "Host=trendline-database;Port=5432;Database=TrendLineDB;Username=postgres;Password=YourStrong!Passw0rd"
+            - name: Solr__Url
+              value: "http://trendline-solr:8983/solr/clothing_shop_core"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "200m"

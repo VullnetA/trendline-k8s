@@ -1,0 +1,47 @@
+# postgres-statefulset.yaml for staging
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: trendline-database
+  namespace: staging
+spec:
+  serviceName: trendline-database
+  replicas: 3 # Increased for staging
+  selector:
+    matchLabels:
+      app: trendline-database
+  template:
+    metadata:
+      labels:
+        app: trendline-database
+    spec:
+      containers:
+        - name: trendline-database
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: YourStrong!Passw0rd
+            - name: POSTGRES_DB
+              value: TrendLineDB
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+          resources:
+            requests:
+              memory: "200Mi"
+              cpu: "100m"
+            limits:
+              memory: "400Mi"
+              cpu: "200m"
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 20Gi # Increased storage

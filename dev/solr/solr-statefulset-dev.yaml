@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: trendline-solr
+  namespace: development
+spec:
+  serviceName: trendline-solr
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trendline-solr
+  template:
+    metadata:
+      labels:
+        app: trendline-solr
+    spec:
+      containers:
+        - name: trendline-solr
+          image: solr:latest
+          ports:
+            - containerPort: 8983
+          # Remove the problematic --user-managed flag
+          args:
+            - "solr-precreate"
+            - "clothing_shop_core"
+          env:
+            - name: SOLR_HEAP
+              value: "128m"
+          volumeMounts:
+            - name: solr-data
+              mountPath: /var/solr
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 50m
+            limits:
+              memory: 512Mi
+              cpu: 100m
+  volumeClaimTemplates:
+    - metadata:
+        name: solr-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi

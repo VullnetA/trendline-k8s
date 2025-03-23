@@ -1,0 +1,23 @@
+# Solr VPA for Staging
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: solr-vpa
+  namespace: staging
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: trendline-solr
+  updatePolicy:
+    updateMode: "Off" # Recommendation mode only
+  resourcePolicy:
+    containerPolicies:
+      - containerName: "*"
+        minAllowed:
+          cpu: 25m
+          memory: 64Mi
+        maxAllowed:
+          cpu: 100m
+          memory: 512Mi

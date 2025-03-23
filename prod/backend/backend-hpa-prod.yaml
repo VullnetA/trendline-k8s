@@ -1,0 +1,21 @@
+# Backend HPA Production
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-hpa
+  namespace: production
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: trendline-backend # Target the backend deployment
+  minReplicas: 3 # Minimum number of pods
+  maxReplicas: 10 # Maximum number of pods
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu # Scale based on CPU utilization
+        target:
+          type: Utilization
+          averageUtilization: 50 # Target 50% average CPU utilization

@@ -1,0 +1,47 @@
+# Solr StatefulSet for Production
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: trendline-solr
+  namespace: production
+spec:
+  serviceName: trendline-solr
+  replicas: 3 # Increased to 3 for production
+  selector:
+    matchLabels:
+      app: trendline-solr
+  template:
+    metadata:
+      labels:
+        app: trendline-solr
+    spec:
+      containers:
+        - name: trendline-solr
+          image: solr:latest
+          ports:
+            - containerPort: 8983
+          args:
+            - "solr-precreate"
+            - "clothing_shop_core"
+          env:
+            - name: SOLR_HEAP
+              value: "64m" # Increased for production
+          volumeMounts:
+            - name: solr-data
+              mountPath: /var/solr
+          resources:
+            requests:
+              memory: 64Mi # Increased for production
+              cpu: 25m # Increased for production
+            limits:
+              memory: 128Mi # Increased for production
+              cpu: 50m # Increased for production
+  volumeClaimTemplates:
+    - metadata:
+        name: solr-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 20Gi # Increased for production

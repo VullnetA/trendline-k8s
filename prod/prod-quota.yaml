@@ -1,0 +1,8 @@
+# Production Resource Quota
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: prod-quota
+  namespace: production
+spec: {}

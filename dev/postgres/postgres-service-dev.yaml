@@ -1,0 +1,15 @@
+# PostgreSQL Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trendline-database
+  namespace: development
+spec:
+  type: NodePort
+  selector:
+    app: trendline-database
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

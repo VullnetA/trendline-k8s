@@ -1,0 +1,15 @@
+# Solr Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trendline-solr
+  namespace: development
+spec:
+  selector:
+    type: NodePort
+    app: trendline-solr
+  ports:
+    - protocol: TCP
+      port: 8983
+      targetPort: 8983

@@ -1,0 +1,13 @@
+# Development Resource Quota
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: dev-quota
+  namespace: development
+spec:
+  hard:
+    requests.cpu: "1" # Total requested CPU cannot exceed 1 core
+    requests.memory: "2Gi" # Total requested memory cannot exceed 1Gi
+    limits.cpu: "1" # Total CPU usage cannot exceed 2 cores
+    limits.memory: "4Gi" # Total memory usage cannot exceed 2Gi

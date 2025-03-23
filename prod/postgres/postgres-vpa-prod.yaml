@@ -1,0 +1,23 @@
+# Database VPA for Production
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: database-vpa
+  namespace: production
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: StatefulSet
+    name: trendline-database
+  updatePolicy:
+    updateMode: "Off" # Recommendation mode only - no automatic updates
+  resourcePolicy:
+    containerPolicies:
+      - containerName: "*"
+        minAllowed:
+          cpu: 250m
+          memory: 512Mi
+        maxAllowed:
+          cpu: 2
+          memory: 4Gi

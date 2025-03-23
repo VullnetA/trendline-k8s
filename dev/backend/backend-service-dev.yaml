@@ -1,0 +1,15 @@
+# Backend Service for Development
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trendline-backend
+  namespace: development
+spec:
+  type: NodePort
+  selector:
+    app: trendline-backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 80

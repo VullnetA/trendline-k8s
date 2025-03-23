@@ -1,0 +1,14 @@
+# Solr Service for Staging
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trendline-solr
+  namespace: staging
+spec:
+  selector:
+    app: trendline-solr
+  ports:
+    - protocol: TCP
+      port: 8983
+      targetPort: 8983

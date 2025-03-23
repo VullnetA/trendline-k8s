@@ -1,0 +1,23 @@
+# Database VPA for Staging
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: database-vpa
+  namespace: staging
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: StatefulSet
+    name: trendline-database
+  updatePolicy:
+    updateMode: "Off" # Recommendation mode only - no automatic updates
+  resourcePolicy:
+    containerPolicies:
+      - containerName: "*"
+        minAllowed:
+          cpu: 100m
+          memory: 200Mi
+        maxAllowed:
+          cpu: 500m
+          memory: 1Gi

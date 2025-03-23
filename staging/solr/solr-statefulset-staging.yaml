@@ -1,0 +1,47 @@
+# Solr StatefulSet for Staging
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: trendline-solr
+  namespace: staging
+spec:
+  serviceName: trendline-solr
+  replicas: 3 # Maintaining 3 replicas for stable structure in staging
+  selector:
+    matchLabels:
+      app: trendline-solr
+  template:
+    metadata:
+      labels:
+        app: trendline-solr
+    spec:
+      containers:
+        - name: trendline-solr
+          image: solr:latest
+          ports:
+            - containerPort: 8983
+          args:
+            - "solr-precreate"
+            - "clothing_shop_core"
+          env:
+            - name: SOLR_HEAP
+              value: "64m" # Set same as production for consistency
+          volumeMounts:
+            - name: solr-data
+              mountPath: /var/solr
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 25m
+            limits:
+              memory: 128Mi
+              cpu: 50m
+  volumeClaimTemplates:
+    - metadata:
+        name: solr-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 10Gi # Less storage than production

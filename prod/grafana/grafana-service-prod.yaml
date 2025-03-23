@@ -1,0 +1,15 @@
+# Grafana Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: production
+spec:
+  type: NodePort # Add this line
+  selector:
+    app: grafana # Fix this line - remove 'type: NodePort'
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

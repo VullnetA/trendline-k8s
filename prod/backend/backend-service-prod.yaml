@@ -1,0 +1,15 @@
+# Backend Service for Production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trendline-backend
+  namespace: production
+spec:
+  type: NodePort # You could also consider LoadBalancer for production
+  selector:
+    app: trendline-backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 80

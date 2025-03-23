@@ -1,0 +1,23 @@
+# Frontend VPA for Production
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: frontend-vpa
+  namespace: production
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: trendline-frontend
+  updatePolicy:
+    updateMode: "Off" # Recommendation mode only - no automatic updates
+  resourcePolicy:
+    containerPolicies:
+      - containerName: "*"
+        minAllowed:
+          cpu: 200m
+          memory: 128Mi
+        maxAllowed:
+          cpu: 1
+          memory: 1Gi

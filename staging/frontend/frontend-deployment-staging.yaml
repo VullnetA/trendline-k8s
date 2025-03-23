@@ -1,0 +1,35 @@
+# Frontend Deployment for Staging
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trendline-frontend
+  namespace: staging
+spec:
+  replicas: 3 # At least 3 pods for staging
+  strategy:
+    type: RollingUpdate # Changed to RollingUpdate for zero-downtime deployments
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: trendline-frontend
+  template:
+    metadata:
+      labels:
+        app: trendline-frontend
+    spec:
+      containers:
+        - name: trendline-frontend
+          image: trendline-frontend:v7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi" # Double the resources compared to dev
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"

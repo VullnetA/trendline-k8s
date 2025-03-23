@@ -1,0 +1,23 @@
+# Grafana VPA for Production
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: grafana-vpa
+  namespace: production
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: grafana
+  updatePolicy:
+    updateMode: "Off" # Recommendation mode only - no automatic updates
+  resourcePolicy:
+    containerPolicies:
+      - containerName: "*"
+        minAllowed:
+          cpu: 50m
+          memory: 256Mi
+        maxAllowed:
+          cpu: 200m
+          memory: 2Gi

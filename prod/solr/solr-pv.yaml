@@ -1,0 +1,15 @@
+# Solr Persistent Volume
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: solr-data-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/solr-data
+---
+

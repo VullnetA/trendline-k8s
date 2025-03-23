@@ -1,0 +1,15 @@
+# Frontend Service for Staging
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trendline-frontend
+  namespace: staging
+spec:
+  type: NodePort
+  selector:
+    app: trendline-frontend
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 80

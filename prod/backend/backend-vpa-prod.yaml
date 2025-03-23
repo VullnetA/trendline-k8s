@@ -1,0 +1,23 @@
+# Backend VPA for Production
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: backend-vpa
+  namespace: production
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: trendline-backend
+  updatePolicy:
+    updateMode: "Off" # Recommendation mode only (doesn't apply changes automatically)
+  resourcePolicy:
+    containerPolicies:
+      - containerName: "*"
+        minAllowed:
+          cpu: 250m
+          memory: 256Mi
+        maxAllowed:
+          cpu: 2
+          memory: 2Gi
