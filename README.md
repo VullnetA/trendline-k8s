@@ -67,7 +67,7 @@ Each environment has different resource allocations and scaling configurations:
 
 -   Three replicas per component
 -   Medium resource allocations
--   Limited by resource quota (2 CPU cores, 4GB RAM)
+-   Limited by resource quota (3 CPU cores, 8GB RAM)
 -   HPAs configured but with limited scaling range
 
 ### Production Environment
