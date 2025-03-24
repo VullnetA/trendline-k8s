@@ -1,0 +1,10 @@
+# Backend ConfigMap for Staging
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trendline-backend-config
+  namespace: staging
+data:
+  ASPNETCORE_ENVIRONMENT: "Staging"
+  Solr__Url: "http://trendline-solr:8983/solr/clothing_shop_core"

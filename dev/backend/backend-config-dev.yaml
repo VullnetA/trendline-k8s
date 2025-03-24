@@ -1,0 +1,10 @@
+# Backend ConfigMap for Development
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trendline-backend-config
+  namespace: development
+data:
+  ASPNETCORE_ENVIRONMENT: "Development"
+  SolrUrl: "http://trendline-solr:8983/solr/clothing_shop_core"

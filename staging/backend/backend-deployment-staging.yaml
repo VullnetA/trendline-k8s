@@ -23,11 +23,20 @@ spec:
             - containerPort: 80
           env:
             - name: ASPNETCORE_ENVIRONMENT
-              value: "Staging"
+              valueFrom:
+                configMapKeyRef:
+                  name: trendline-backend-config
+                  key: ASPNETCORE_ENVIRONMENT
             - name: ConnectionStrings__DefaultConnection
-              value: "Host=trendline-database;Port=5432;Database=TrendLineDB;Username=postgres;Password=YourStrong!Passw0rd"
+              valueFrom:
+                secretKeyRef:
+                  name: trendline-db-credentials
+                  key: connection-string
             - name: Solr__Url
-              value: "http://trendline-solr:8983/solr/clothing_shop_core"
+              valueFrom:
+                configMapKeyRef:
+                  name: trendline-backend-config
+                  key: Solr__Url
           resources:
             requests:
               memory: "256Mi"
