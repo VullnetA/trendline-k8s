@@ -7,7 +7,6 @@ metadata:
   namespace: development
 spec:
   selector:
-    type: NodePort
     app: trendline-solr
   ports:
     - protocol: TCP

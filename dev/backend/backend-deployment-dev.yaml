@@ -27,7 +27,7 @@ spec:
                 configMapKeyRef:
                   name: trendline-backend-config
                   key: ASPNETCORE_ENVIRONMENT
-            - name: ConnectionStringsDefaultConnection
+            - name: ConnectionStrings__DefaultConnection
               valueFrom:
                 secretKeyRef:
                   name: trendline-db-credentials
