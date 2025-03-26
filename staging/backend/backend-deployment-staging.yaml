@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: trendline-backend
-          image: trendline-backend:latest
+          image: vuki123/trendline-backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

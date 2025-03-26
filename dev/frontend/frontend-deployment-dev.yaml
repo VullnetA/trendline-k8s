@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: trendline-frontend
-          image: trendline-frontend:v7
+          image: vuki123/trendline-frontend:v7
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
